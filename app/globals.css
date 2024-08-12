@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 [data-rehype-pretty-code-figure] pre {
-  @apply px-0 bg-zinc-50 dark:bg-yellow-300 border;
+  @apply px-0 bg-zinc-50 dark:bg-zinc-900 border dark:border-zinc-800;
 }
 
 [data-rehype-pretty-code-figure] code {

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,14 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className='scroll-pt-5'>
-      <body
-        className={`${inter.className} min-h-dvh bg-zinc-50 dark:bg-zinc-800`}
-      >
-        <div className='px-5 mx-auto max-w-xl'>
-          <Navigation />
-          {children}
-        </div>
+    <html suppressHydrationWarning lang='en' className='scroll-pt-5'>
+      <body className={`${inter.className} min-h-dvh `}>
+        <ThemeProvider attribute='class'>
+          <div className='px-5 mx-auto max-w-xl'>
+            <Navigation />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
