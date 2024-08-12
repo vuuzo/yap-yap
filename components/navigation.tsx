@@ -21,8 +21,8 @@ export default function Navigation() {
               <Link
                 href={href}
                 className={cn(
-                  "text-black/60 hover:text-black transition-colors",
-                  pathname === href ? "text-black" : ""
+                  "text-zinc-700 hover:text-black dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors",
+                  pathname === href ? "text-black dark:text-white" : ""
                 )}
               >
                 {label}

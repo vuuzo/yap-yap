@@ -6,12 +6,15 @@ import { formatDate } from "@/lib/utils";
 export default function PostItem({ post }: { post: Post }) {
   return (
     <Link href={`/${post.slug}`} className='group flex h-full flex-col'>
-      <div className='mt-auto pt-2'>
-        <time dateTime={post.date} className='text-sm text-zinc-400'>
+      <div className='mb-1'>
+        <time
+          dateTime={post.date}
+          className='text-xs text-zinc-400 dark:text-zinc-500'
+        >
           {formatDate(post.date)}
         </time>
       </div>
-      <h3 className='line-clamp-1 text-2xl font-bold group-hover:underline mb-1'>
+      <h3 className='line-clamp-1 text-xl group-hover:underline mb-1'>
         {post.title}
       </h3>
 

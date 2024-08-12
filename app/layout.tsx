@@ -24,7 +24,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang='en' className='scroll-pt-5'>
       <body className={`${inter.className} min-h-dvh `}>
         <ThemeProvider attribute='class'>
-          <div className='px-5 mx-auto max-w-xl'>
+          <div className='px-5 pb-20 mx-auto max-w-xl'>
             <Navigation />
             {children}
           </div>

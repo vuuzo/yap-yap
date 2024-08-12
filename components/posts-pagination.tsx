@@ -45,9 +45,17 @@ export function PostsPagination({
           <PaginationItem key={i}>
             <PaginationLink
               isActive={i + 1 === currentPage}
+              className='group'
               href={createURL(i + 1)}
             >
-              {i + 1}
+              <div
+                className={cn(
+                  "w-1 h-1 rounded-full bg-white/10 group-hover:bg-white/20",
+                  i + 1 === currentPage
+                    ? "bg-white group-hover:bg-white/100"
+                    : ""
+                )}
+              />
             </PaginationLink>
           </PaginationItem>
         ))}
