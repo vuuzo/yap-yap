@@ -7,31 +7,47 @@ tags: ["case study", "nextjs"]
 
 Check out live [site](https://wwww.saves-theta.vercel.app)
 
-```tsx title="page.tsx"  {4} showLineNumbers /MDXContent/
-import { posts } from "#site/content";
-import { MDXContent } from "@/components/mdx-components";
+## Core functionality
 
-export default function PostPage({ params }: { params: { slug: string[] } }) {
-  const slug = params.slug.join("/");
-  const post = posts.find((post) => post.slugAsParams === slug);
+For fetching URL's metadata I am using [Microlink](https://microlink.io/meta)'s API which handles well most of the favicons.
 
-  if (!post) return <p>post does not exist</p>;
+This is main code for each _save_ element. It's wrapped within Radix's `ContextMenu` element.
 
-  return (
-    <div className='prose prose-teal dark:prose-invert max-w-xl mx-auto px-5'>
-      <header className='pt-20 pb-10'>
-        <h1>{post.title}</h1>
-        <p>{post.description}</p>
-      </header>
-      <MDXContent code={post.content} />
+<GrowElement>
+  ```tsx {4} showLineNumbers
+  <Link
+    href={save.url}
+    target='_blank'
+    rel='noreferrer noopener'
+    title={save.title}
+    className='flex h-10 items-center justify-between gap-2 rounded-xl px-3 text-sm hover:bg-zinc-100 hover:shadow-[inset_0_0_2px_4px_hsla(0,0%,94%,.4)]'
+  >
+    <div className='flex items-center gap-2'>
+      {save.favicon ? (
+        <img src={save.favicon} alt='icon' className='h-5 w-5' />
+      ) : (
+        <GlobeIcon className='h-5 rounded-full text-gray-500' />
+      )}
     </div>
-  );
-}
-```
+    <div className='flex items-baseline gap-2'>
+      <h2 className='max-w-[250px] overflow-hidden text-ellipsis whitespace-nowrap xs:max-w-[280px]'>
+        {save.title}
+      </h2>
+      <p className='hidden text-xs text-zinc-500 xs:block'>{save.domain}</p>
+    </div>
+    <p className='ml-auto shrink-0 font-medium text-zinc-600'>
+      {save.createdAt.toLocaleDateString("en", {
+        day: "numeric",
+        month: "short",
+      })}
+    </p>
+  </Link>
+  ```
+</GrowElement>
 
-## Group Highlighted Chars By Id
+## Highlight test
 
-Place an id after # after the chars. This allows you to color chars differently based on their id.
+Place an id after # after the chars. This allows you to color chars differently based on their id. Don't pay much attention, it's just a test.
 
 ```js /age/#v /name/#v /setAge/#s /setName/#s /50/#i /"Taylor"/#i
 const [age, setAge] = useState(50);
