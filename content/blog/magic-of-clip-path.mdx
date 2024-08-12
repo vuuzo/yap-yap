@@ -1,0 +1,29 @@
+---
+title: The Magic of Clip Path
+description: One of the most underrated CSS properties.
+date: 2024-09-13
+---
+
+`clip-path` is often used for trimming a DOM node into specific shapes, like triangles. But what if I told you that it's also great for animations?
+
+In this article, we'll dive into `clip-path` and explore some of the cool things you can do with it. Once you read it, you'll start seeing this CSS property being used everywhere.
+
+## The Basics
+
+The `clip-path` property is used to clip an element into a specific shape. We create a clipping region with it, content outside of this region will be hidden, while content inside will be visible. This allows us to easily turn a rectangle into a circle for example.
+
+```css
+.circle {
+  clip-path: circle(50% at 50% 50%);
+}
+```
+
+This has no effect on layout meaning that an element with `clip-path` will occupy the same space as an element without it, just like `transform`.
+
+## Positioning
+
+We positioned our circle above using a coordinate system. It starts at the top left corner (0, 0). `circle(50% at 50% 50%)` means that the circle will have a border radius of 50% and will be positioned at 50% from the top and 50% from the left, which is the center of the element.
+
+There are other values like `ellipse`, `polygon`, or even `url()` which allows us to use a custom SVG as the clipping path, but we are going to focus on `inset` as that's what we'll be using for all animations in this post.
+
+The inset values define the top, right, bottom, and left offsets of a rectangle. This means that if we use `inset(100%, 100%, 100%, 100%)`, or `inset(100%)` as a shortcut, we are "hiding" (clipping) the whole element. An inset of `(0px 50% 0px 0px)` would make the left half of the element invisible, and so on.

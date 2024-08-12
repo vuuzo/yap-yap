@@ -1,0 +1,39 @@
+---
+title: Saves breakdown
+description: How I created one of my projects
+date: 2024-08-17
+tags: ["case study", "nextjs"]
+---
+
+Check out live [site](https://wwww.saves-theta.vercel.app)
+
+```tsx title="page.tsx"  {4} showLineNumbers /MDXContent/
+import { posts } from "#site/content";
+import { MDXContent } from "@/components/mdx-components";
+
+export default function PostPage({ params }: { params: { slug: string[] } }) {
+  const slug = params.slug.join("/");
+  const post = posts.find((post) => post.slugAsParams === slug);
+
+  if (!post) return <p>post does not exist</p>;
+
+  return (
+    <div className='prose prose-teal dark:prose-invert max-w-xl mx-auto px-5'>
+      <header className='pt-20 pb-10'>
+        <h1>{post.title}</h1>
+        <p>{post.description}</p>
+      </header>
+      <MDXContent code={post.content} />
+    </div>
+  );
+}
+```
+
+## Group Highlighted Chars By Id
+
+Place an id after # after the chars. This allows you to color chars differently based on their id.
+
+```js /age/#v /name/#v /setAge/#s /setName/#s /50/#i /"Taylor"/#i
+const [age, setAge] = useState(50);
+const [name, setName] = useState("Taylor");
+```
