@@ -1,11 +1,12 @@
 import * as runtime from "react/jsx-runtime";
+import GrowElement from "./grow-element";
 
 const useMDXComponent = (code: string) => {
   const fn = new Function(code);
   return fn({ ...runtime }).default;
 };
 
-const components = {};
+const components = { GrowElement };
 
 interface MDXProps {
   code: string;
