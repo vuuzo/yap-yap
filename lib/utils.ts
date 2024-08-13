@@ -36,5 +36,13 @@ export function getAllTags(posts: Post[]) {
 }
 
 export function sortTagsByCount(tags: Record<string, number>) {
-  return Object.keys(tags).sort((a, b) => tags[a] - tags[b]);
+  return Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
+}
+
+export function getPostsWithTag(posts: Post[], tag: string) {
+  return posts.filter((post) => {
+    if (!post.tags) return false;
+    const tags = new Set(post.tags);
+    return tags.has(tag);
+  });
 }
