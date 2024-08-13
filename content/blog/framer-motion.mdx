@@ -1,0 +1,137 @@
+---
+title: "Animating with Framer Motion: A Beginner's Guide"
+date: 2024-08-13
+tags: ["framer motion"]
+---
+
+Animations can bring a website to life, adding a layer of interactivity that enhances user experience. Whether you're aiming for subtle transitions or complex sequences, Framer Motion is a powerful library that makes it easy to create smooth and performant animations in React. In this post, we'll dive into the basics of Framer Motion and how you can start using it to animate your projects.
+
+## What is Framer Motion?
+
+Framer Motion is a popular animation library for React that provides a simple API for creating animations and gestures. Built on top of the Framer prototyping tool, it allows developers to easily add animations to their React components without worrying about performance issues or writing complex CSS keyframes.
+
+Some of the key features of Framer Motion include:
+
+- **Declarative syntax**: Define your animations in a straightforward and readable way using props.
+- **Physics-based animations**: Create natural, spring-like motions that feel realistic.
+- **Gestures**: Add interactivity with drag, hover, tap, and other gestures.
+- **Variants**: Manage complex animation sequences with ease using variants.
+
+## Setting Up Framer Motion
+
+To get started with Framer Motion, you'll need to install it in your React project. If you're using npm or yarn, you can do this by running:
+
+```bash
+npm install framer-motion
+# or
+yarn add framer-motion
+```
+
+Once installed, you're ready to start animating!
+
+## Basic Animations
+
+Let's start with a simple example: animating the opacity and position of a box when it appears on the screen.
+
+```jsx showLineNumbers
+import { motion } from "framer-motion";
+
+export default function Example() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{ width: 100, height: 100, backgroundColor: "coral" }}
+    />
+  );
+}
+```
+
+In this example, we use the `motion.div` component to animate a `<div>` element. The `initial` prop defines the starting state of the animation, while the `animate` prop specifies the end state. The `transition` prop controls the duration and timing of the animation.
+
+When this component is rendered, the box will smoothly fade in and move from 50 pixels above its final position to its original place, over 0.5 seconds.
+
+## Adding Gestures
+
+Framer Motion also makes it easy to add gestures like hover, tap, and drag to your components. Here's how you can create a box that changes color on hover and expands slightly when clicked:
+
+```jsx showLineNumbers
+import { motion } from "framer-motion";
+
+export default function InteractiveBox() {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.1, backgroundColor: "tomato" }}
+      whileTap={{ scale: 0.9 }}
+      style={{ width: 100, height: 100, backgroundColor: "coral" }}
+    />
+  );
+}
+```
+
+With the `whileHover` and `whileTap` props, you can easily define different states for when the user interacts with the element. The box will grow slightly and change color when hovered, and shrink when tapped or clicked.
+
+## Creating Complex Animations with Variants
+
+Variants are one of the most powerful features of Framer Motion, allowing you to define multiple states for an animation and switch between them effortlessly. This is especially useful for managing complex animations or multiple elements.
+
+Here's an example of a staggered list animation:
+
+<GrowElement>
+```jsx showLineNumbers
+import { motion } from "framer-motion";
+
+const containerVariants = {
+hidden: { opacity: 0 },
+visible: {
+opacity: 1,
+transition: {
+staggerChildren: 0.3,
+},
+},
+};
+
+const itemVariants = {
+hidden: { opacity: 0, y: -20 },
+visible: { opacity: 1, y: 0 },
+};
+
+export default function StaggeredList() {
+  return (
+    <motion.ul
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      style={{ listStyle: "none", padding: 0 }}
+    >
+      {[1, 2, 3].map((item) => (
+        <motion.li
+          key={item}
+          variants={itemVariants}
+          style={{ marginBottom: 10, backgroundColor: "coral", padding: 10 }}
+        >
+          Item {item}
+        </motion.li>
+      ))}
+    </motion.ul>
+  );
+}
+```
+</GrowElement>
+
+In this example, we're animating a list of items. The `containerVariants` object defines the animation for the entire list, including a `staggerChildren` property that delays each child's animation. The `itemVariants` object defines the animation for each list item. When the list appears, each item will fade in and move up slightly, one after the other.
+
+## Conclusion
+
+Framer Motion is a powerful tool for adding smooth, interactive animations to your React applications. With its declarative syntax, physics-based animations, and support for gestures, it offers a wide range of possibilities for creating engaging user experiences.
+
+Whether you're building simple UI transitions or complex, multi-step animations, Framer Motion provides the tools you need to bring your projects to life. Give it a try in your next React project, and see how it can transform the way users interact with your app!
+
+---
+
+**Further Reading:**
+
+- [Framer Motion Documentation](https://www.framer.com/docs/)
+- [Advanced Animation Techniques with Framer Motion](https://example.com/advanced-framer-motion)
+- [Creating Stunning UI Transitions with Framer Motion](https://example.com/ui-transitions-framer-motion)

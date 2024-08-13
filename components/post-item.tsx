@@ -14,17 +14,21 @@ export default function PostItem({ post }: { post: Post }) {
           {formatDate(post.date)}
         </time>
       </div>
-      <h3 className='line-clamp-1 text-xl group-hover:underline mb-1'>
+      <h3 className='line-clamp-1 text-xl text-zinc-800 dark:text-zinc-300 group-hover:underline mb-1'>
         {post.title}
       </h3>
 
-      {post.description && <p className='line-clamp-1'>{post.description}</p>}
+      {post.description && (
+        <p className='line-clamp-1 text-zinc-500 dark:text-zinc-400'>
+          {post.description}
+        </p>
+      )}
 
-      <div className='flex gap-1 flex-wrap pt-3'>
+      {/* <div className='flex gap-1 flex-wrap pt-3'>
         {post.tags?.map((tag) => (
           <Tag key={tag} tag={tag} />
         ))}
-      </div>
+      </div> */}
     </Link>
   );
 }
