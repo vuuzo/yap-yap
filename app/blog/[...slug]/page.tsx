@@ -38,7 +38,7 @@ export default function PostPage({ params }: { params: { slug: string[] } }) {
         <Heading>{post.title}</Heading>
         {post.description && <Subheading>{post.description}</Subheading>}
       </PageHeader>
-      <article className='prose prose-zinc dark:prose-invert'>
+      <article className='prose prose-zinc dark:prose-invert prose-a:decoration-violet-300 prose-a:underline-offset-2 hover:prose-a:decoration-2'>
         <MDXContent code={post.content} />
       </article>
     </main>

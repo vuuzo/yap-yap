@@ -50,9 +50,9 @@ export function PostsPagination({
             >
               <div
                 className={cn(
-                  "w-1 h-1 rounded-full bg-white/10 group-hover:bg-white/20",
+                  "w-1 h-1 rounded-full bg-black/10 group-hover:bg-black/20 dark:bg-white/10 dark:group-hover:bg-white/20",
                   i + 1 === currentPage
-                    ? "bg-white group-hover:bg-white/100"
+                    ? "bg-black group-hover:bg-black/100 dark:bg-white dark:group-hover:bg-white/100"
                     : ""
                 )}
               />
