@@ -1,0 +1,117 @@
+---
+title: Understanding Server Components in Next.js
+date: 2024-08-14
+tags: ["nextjs"]
+# published: false
+---
+
+Next.js 13 introduced a new feature that has been a game-changer for React developers: **Server Components**. This feature allows components to be rendered on the server, reducing the amount of JavaScript sent to the client and optimizing performance. In this post, we'll explore what Server Components are, how they work in Next.js, and how you can start using them in your projects.
+
+## What Are Server Components?
+
+Server Components are React components that are executed and rendered entirely on the server. Unlike traditional React components, which are sent to the client and hydrated, Server Components never run in the browser. This allows you to keep the client-side bundle smaller, as only the necessary JavaScript and HTML are sent to the client.
+
+### Key Benefits
+
+- **Improved Performance:** By rendering components on the server, you reduce the amount of JavaScript that needs to be loaded and executed on the client.
+- **Better SEO:** Server-side rendering (SSR) ensures that search engines can crawl and index your content more effectively.
+- **Simplified Data Fetching:** Since Server Components run on the server, you can directly access your database, APIs, or any backend logic without needing to pass data through APIs.
+
+## Using Server Components in Next.js
+
+Next.js makes it straightforward to start using Server Components. By default, components in the `app` directory are treated as Server Components. Let's look at an example:
+
+```tsx
+// app/page.tsx
+import React from "react";
+
+const getData = async () => {
+  const res = await fetch("https://api.example.com/data");
+  return res.json();
+};
+
+export default async function Page() {
+  const data = await getData();
+
+  return (
+    <div>
+      <h1>Server Components in Next.js</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+### Explanation
+
+- **Data Fetching:** Notice how we fetch data directly in the `Page` component using `fetch`. This is possible because `Page` is a Server Component, and all logic inside it runs on the server.
+- **No Hydration Needed:** Since this component is rendered on the server, the client only receives the HTML, and no additional JavaScript is needed to hydrate this part of the page.
+
+## Client Components
+
+While Server Components are powerful, you might still need some interactivity in your application. This is where **Client Components** come into play. You can mark a component as a Client Component by adding the `"use client"` directive at the top of the file:
+
+```tsx
+// components/InteractiveButton.tsx
+"use client";
+
+import React, { useState } from "react";
+
+export default function InteractiveButton() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>Clicked {count} times</button>
+  );
+}
+```
+
+### Explanation
+
+- **Interactivity:** The `InteractiveButton` component needs to handle user interaction, so it is marked as a Client Component with `"use client"`.
+- **Hydration:** This component will be sent to the client as JavaScript and hydrated there to support user interaction.
+
+## Mixing Server and Client Components
+
+A powerful aspect of Next.js is the ability to mix Server and Client Components within the same application. For instance, you could have a Server Component that renders data and a Client Component for interactivity:
+
+```tsx
+// app/page.tsx
+import React from "react";
+import InteractiveButton from "../components/InteractiveButton";
+
+const getData = async () => {
+  const res = await fetch("https://api.example.com/data");
+  return res.json();
+};
+
+export default async function Page() {
+  const data = await getData();
+
+  return (
+    <div>
+      <h1>Server Components in Next.js</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+      <InteractiveButton />
+    </div>
+  );
+}
+```
+
+### Explanation
+
+- **Hybrid Rendering:** The `Page` component is a Server Component, rendering static content, while `InteractiveButton` is a Client Component, adding interactivity.
+
+## Conclusion
+
+Server Components in Next.js open up a new way of building React applications, combining the benefits of server-side rendering with the flexibility of client-side interactivity. By understanding when and how to use Server and Client Components, you can build more efficient and performant web applications.
+
+If you haven’t tried Server Components yet, now is a great time to start. Dive into your Next.js projects and see how this powerful feature can enhance your development experience!
