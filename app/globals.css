@@ -2,56 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* code window */
+[data-rehype-pretty-code-figure] {
+  overflow: hidden;
+  @apply border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50/30 dark:bg-zinc-800/55;
+}
+
+/* code block */
 [data-rehype-pretty-code-figure] pre {
-  @apply px-0 bg-zinc-50 dark:bg-zinc-900 border dark:border-zinc-800;
+  @apply bg-zinc-50 dark:bg-zinc-900 rounded-none py-2 px-0 text-[13px] leading-6 overflow-x-auto;
 }
 
-[data-rehype-pretty-code-figure] code {
-  @apply text-sm !leading-loose;
+/* title */
+[data-rehype-pretty-code-title] {
+  margin: 0;
+  padding-top: 0.25rem;
+  border-radius: 0.375rem;
+  @apply border-b border-inherit dark:text-zinc-500 text-xs font-mono py-2 px-3 rounded-b-none;
 }
 
-[data-rehype-pretty-code-figure] code[data-line-numbers] {
+/* line */
+[data-rehype-pretty-code-figure] [data-line] {
+  @apply pl-2 pr-2  border-l-4 border-transparent;
+}
+
+/* line numbers */
+code[data-line-numbers] {
   counter-reset: line;
 }
 
 [data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
-  @apply mr-4 inline-block w-4 text-right text-gray-500;
+  @apply mr-4 inline-block w-4 text-right text-zinc-400/80 dark:text-zinc-700;
 }
 
-[data-rehype-pretty-code-figure] [data-line] {
-  @apply border-l-2 border-l-transparent px-3;
-}
-
+/* highlighted line */
 [data-rehype-pretty-code-figure] [data-highlighted-line] {
-  background: rgba(200, 200, 255, 0.1);
-  @apply border-l-blue-400;
+  @apply bg-purple-400/15 border-l-4 border-violet-400;
 }
 
-[data-rehype-pretty-code-figure] [data-highlighted-chars] {
-  @apply rounded bg-zinc-600/50;
-  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
-}
-
-[data-rehype-pretty-code-figure] [data-chars-id] {
-  @apply border-b-2 p-1 shadow-none;
+[data-rehype-pretty-code-figure] code {
+  @apply grid;
 }
 
 .subheading-anchor {
   @apply font-bold no-underline hover:underline;
 }
 
+/* dark & light mode */
 code[data-theme*=" "],
 code[data-theme*=" "] span {
   color: var(--shiki-light);
-  /* background-color: var(--shiki-light-bg); */
 }
 
 @media (prefers-color-scheme: dark) {
   code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-dark);
-    /* background-color: var(--shiki-dark-bg); */
   }
 }
