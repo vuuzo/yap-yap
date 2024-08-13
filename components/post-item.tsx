@@ -1,11 +1,19 @@
 import { Post } from "#site/content";
 import Link from "next/link";
-import Tag from "./tag";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
-export default function PostItem({ post }: { post: Post }) {
+export default function PostItem({
+  post,
+  className,
+}: {
+  post: Post;
+  className?: string;
+}) {
   return (
-    <Link href={`/${post.slug}`} className='group flex h-full flex-col'>
+    <Link
+      href={`/${post.slug}`}
+      className={cn("group flex h-full flex-col", className)}
+    >
       <div className='mb-1'>
         <time
           dateTime={post.date}
@@ -23,12 +31,6 @@ export default function PostItem({ post }: { post: Post }) {
           {post.description}
         </p>
       )}
-
-      {/* <div className='flex gap-1 flex-wrap pt-3'>
-        {post.tags?.map((tag) => (
-          <Tag key={tag} tag={tag} />
-        ))}
-      </div> */}
     </Link>
   );
 }
