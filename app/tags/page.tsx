@@ -39,7 +39,7 @@ export default function TagsPage() {
                   >
                     <PostItem
                       post={post}
-                      className='bg-zinc-100/80 dark:bg-zinc-800/75 p-6 rounded-lg'
+                      className='bg-zinc-100/80 dark:bg-zinc-800/75 p-6'
                     />
                   </li>
                 ))}
