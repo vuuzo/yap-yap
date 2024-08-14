@@ -1,6 +1,7 @@
 import { posts } from "#site/content";
 import { MDXContent } from "@/components/mdx-components";
 import { Heading, PageHeader, Subheading } from "@/components/page-header";
+import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -35,6 +36,9 @@ export default function PostPage({ params }: { params: { slug: string[] } }) {
   return (
     <main>
       <PageHeader className='items-start'>
+        <div className='text-zinc-500 mb-4'>
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
+        </div>
         <Heading>{post.title}</Heading>
         {post.description && <Subheading>{post.description}</Subheading>}
       </PageHeader>
