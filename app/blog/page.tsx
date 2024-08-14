@@ -26,7 +26,7 @@ export default function Blog({
       </PageHeader>
       <ul>
         {displayPosts.map((post) => (
-          <li key={post.slug} className='mb-10'>
+          <li key={post.slug} className='mb-5'>
             <PostItem post={post} />
           </li>
         ))}
