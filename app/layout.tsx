@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
 import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,9 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang='en' className='scroll-pt-5'>
-      <body className={`${inter.className} min-h-dvh `}>
+      <body className={`${inter.className} min-h-dvh`}>
         <ThemeProvider attribute='class'>
-          <div className='px-5 pb-20 mx-auto max-w-xl'>
+          <div className='px-5 pb-20 mx-auto max-w-xl flex flex-col h-full min-h-screen'>
             <Navigation />
             {children}
           </div>
