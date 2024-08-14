@@ -81,3 +81,13 @@ code[data-theme*=" "] span {
     content: "";
   }
 }
+
+.custom-border {
+  animation: dash 10s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 100%;
+  }
+}

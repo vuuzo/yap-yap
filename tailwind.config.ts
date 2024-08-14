@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        "inset-border":
+          "inset 0 0 0 2px hsla(0, 0%, 100%, .10), inset 0 0 0 .5px hsla(0, 0%, 0%, .75)",
+      },
       fontFamily: {
         mono: ["var(--font-geist-mono)"],
       },
