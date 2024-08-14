@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        mono: ["var(--font-geist-mono)"],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
