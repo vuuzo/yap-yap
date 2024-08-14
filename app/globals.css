@@ -5,12 +5,12 @@
 /* code window */
 [data-rehype-pretty-code-figure] {
   overflow: hidden;
-  @apply border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50/30 dark:bg-zinc-800/55;
+  @apply border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50/45 dark:bg-zinc-800/45;
 }
 
 /* code block */
 [data-rehype-pretty-code-figure] pre {
-  @apply bg-zinc-50 dark:bg-zinc-900 rounded-none py-2 px-0 text-[13px] leading-6 overflow-x-auto;
+  @apply bg-transparent dark:bg-zinc-900/80 rounded-none py-2 px-0 text-[13px] leading-6 overflow-x-auto;
 }
 
 /* title */
@@ -18,7 +18,7 @@
   margin: 0;
   padding-top: 0.25rem;
   border-radius: 0.375rem;
-  @apply border-b border-inherit dark:text-zinc-500 text-xs font-mono py-2 px-3 rounded-b-none;
+  @apply border-b border-inherit bg-zinc-50/50 dark:bg-zinc-900/70 dark:text-zinc-500 text-xs font-mono py-2 px-3 rounded-b-none;
 }
 
 /* line */
