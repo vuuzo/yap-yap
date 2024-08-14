@@ -20,7 +20,7 @@ export default function Blog({
     POSTS_PER_PAGE * currentPage
   );
   return (
-    <main>
+    <main className='grow flex flex-col'>
       <PageHeader>
         <Heading>{`{blog}`}</Heading>
       </PageHeader>
