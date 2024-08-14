@@ -12,7 +12,7 @@ export default function PostItem({
   return (
     <Link
       href={`/${post.slug}`}
-      className={cn("group flex h-full flex-col", className)}
+      className={cn("group block h-full", className)}
     >
       <div className='mb-1'>
         <time
@@ -22,7 +22,7 @@ export default function PostItem({
           {formatDate(post.date)}
         </time>
       </div>
-      <h3 className='line-clamp-1 text-xl text-zinc-800 dark:text-zinc-300 group-hover:underline mb-1'>
+      <h3 className='line-clamp-1 text-zinc-800 dark:text-zinc-300 group-hover:underline'>
         {post.title}
       </h3>
 
