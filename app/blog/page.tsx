@@ -4,7 +4,7 @@ import PostItem from "@/components/post-item";
 import { PostsPagination } from "@/components/posts-pagination";
 import { sortPosts } from "@/lib/utils";
 
-const POSTS_PER_PAGE = 4;
+const POSTS_PER_PAGE = 10;
 
 export default function Blog({
   searchParams,
@@ -26,7 +26,7 @@ export default function Blog({
       </PageHeader>
       <ul>
         {displayPosts.map((post) => (
-          <li key={post.slug} className='mb-6'>
+          <li key={post.slug} className='mb-10'>
             <PostItem post={post} />
           </li>
         ))}
