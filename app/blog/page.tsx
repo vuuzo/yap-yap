@@ -26,8 +26,8 @@ export default function Blog({
       </PageHeader>
       <ul>
         {displayPosts.map((post) => (
-          <li key={post.slug} className='mb-5'>
-            <PostItem post={post} />
+          <li key={post.slug} className='mb-2'>
+            <PostItem post={post} className='p-4 hover:bg-zinc-600/10 -mx-4' />
           </li>
         ))}
       </ul>
