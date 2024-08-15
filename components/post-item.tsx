@@ -25,7 +25,7 @@ export default function PostItem({
           <rect
             x={1.5}
             y={1.5}
-            rx='12'
+            rx='9'
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'
