@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import Navigation from "@/components/navigation";
 import { ThemeProvider } from "next-themes";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -21,13 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang='en' className='scroll-pt-5'>
-      <body
-        className={`${GeistSans.className} ${GeistMono.variable}  min-h-dvh`}
-      >
+      <body className={`${GeistSans.className} ${GeistMono.variable}`}>
         <ThemeProvider attribute='class'>
-          <div className='px-5 pb-20 mx-auto max-w-xl flex flex-col h-full min-h-screen'>
+          <div className='grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-dvh max-w-xl mx-auto px-4'>
             <Navigation />
             {children}
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
