@@ -6,8 +6,6 @@ import {
   PaginationContent,
   PaginationItem,
   PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "./ui/pagination";
 import { cn } from "@/lib/utils";
 
@@ -24,9 +22,6 @@ export function PostsPagination({
 
   const currentPage = Number(searchParams.get("page")) || 1;
 
-  const prevPage = currentPage - 1;
-  const nextPage = currentPage + 1;
-
   const createURL = (page: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
@@ -36,11 +31,6 @@ export function PostsPagination({
   return (
     <Pagination className={cn("", className)}>
       <PaginationContent>
-        {prevPage >= 1 && (
-          <PaginationItem>
-            <PaginationPrevious href={createURL(prevPage)} />
-          </PaginationItem>
-        )}
         {Array.from({ length: pages }).map((_, i) => (
           <PaginationItem key={i}>
             <PaginationLink
@@ -59,11 +49,6 @@ export function PostsPagination({
             </PaginationLink>
           </PaginationItem>
         ))}
-        {nextPage <= pages && (
-          <PaginationItem>
-            <PaginationNext href={createURL(nextPage)} />
-          </PaginationItem>
-        )}
       </PaginationContent>
     </Pagination>
   );
