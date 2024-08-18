@@ -3,5 +3,5 @@ export default function GrowElement({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className='min-h-7 lg:-mx-40'>{children}</div>;
+  return <div className='lg:-mx-40 sm:-mx-10'>{children}</div>;
 }
