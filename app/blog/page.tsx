@@ -20,19 +20,19 @@ export default function Blog({
     POSTS_PER_PAGE * currentPage
   );
   return (
-    <main className='grow flex flex-col'>
+    <main className='flex flex-col'>
       <PageHeader>
-        <Heading>{`{blog}`}</Heading>
+        <Heading>Blog posts</Heading>
       </PageHeader>
       <ul>
         {displayPosts.map((post) => (
-          <li key={post.slug} className='mb-2'>
-            <PostItem post={post} className='p-4 hover:bg-zinc-600/10 -mx-4' />
+          <li key={post.slugAsParams} className='mb-2'>
+            <PostItem post={post} />
           </li>
         ))}
       </ul>
       <PostsPagination
-        className='mt-auto'
+        className='mt-auto pt-10'
         pages={totalPages}
         currentPage={currentPage}
       />

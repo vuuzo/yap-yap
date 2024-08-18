@@ -1,18 +1,31 @@
 import { Post } from "#site/content";
 import Link from "next/link";
 import { cn, formatDate } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
 
-export default function PostItem({
-  post,
-  className,
-}: {
+const postItemVariants = cva("group block relative h-full rounded-xl", {
+  variants: {
+    variant: {
+      default: "p-4 hover:bg-zinc-600/10 -mx-4",
+      secondary: "bg-zinc-100/80 dark:bg-zinc-800/75 p-6",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+interface PostItemProps
+  extends React.LinkHTMLAttributes<HTMLLinkElement>,
+    VariantProps<typeof postItemVariants> {
   post: Post;
   className?: string;
-}) {
+}
+export default function PostItem({ post, className, variant }: PostItemProps) {
   return (
     <Link
       href={`/${post.slug}`}
-      className={cn("group block relative h-full rounded-xl", className)}
+      className={cn(postItemVariants({ variant, className }))}
     >
       <div className='absolute inset-[2px] pointer-events-none'>
         <svg
@@ -37,23 +50,15 @@ export default function PostItem({
         </svg>
       </div>
 
-      <div className='mb-1'>
-        <time
-          dateTime={post.date}
-          className='text-xs text-zinc-400 dark:text-zinc-500 leading-none'
-        >
-          {formatDate(post.date)}
-        </time>
-      </div>
       <h3 className='line-clamp-1 text-zinc-800 dark:text-zinc-300 group-hover:underline'>
         {post.title}
       </h3>
-
-      {post.description && (
-        <p className='line-clamp-1 text-zinc-500 dark:text-zinc-400'>
-          {post.description}
-        </p>
-      )}
+      <time
+        dateTime={post.date}
+        className='text-xs text-zinc-400 dark:text-zinc-500 leading-none'
+      >
+        {formatDate(post.date)}
+      </time>
     </Link>
   );
 }
