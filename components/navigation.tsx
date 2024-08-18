@@ -13,7 +13,7 @@ export default function Navigation() {
   const pathname = usePathname();
   return (
     <header>
-      <nav className='h-12 flex justify-between items-center'>
+      <nav className='h-16 flex justify-between items-center'>
         <Link href='/'>🗣️</Link>
         <ul className='flex gap-5'>
           {NAV_LINKS.map(({ label, href }) => (

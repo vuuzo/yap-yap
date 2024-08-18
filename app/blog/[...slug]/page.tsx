@@ -35,7 +35,7 @@ export default function PostPage({ params }: { params: { slug: string[] } }) {
   if (!post || !post.published) notFound();
 
   return (
-    <main>
+    <main className='pb-16'>
       <PageHeader className='items-start'>
         <div className='text-zinc-500 mb-4'>
           <time dateTime={post.date}>{formatDate(post.date)}</time>
